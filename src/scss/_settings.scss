@@ -1,0 +1,13 @@
+.dis-none {
+  display: none;
+}
+
+.anim-vis {
+  opacity: 0;
+  transition: opacity .3s ease-in-out;
+}
+
+.vis {
+  opacity: 1;
+  visibility: visible;
+}
