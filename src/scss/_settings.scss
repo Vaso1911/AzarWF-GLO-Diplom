@@ -8,6 +8,11 @@
 }
 
 .vis {
-  opacity: 1;
   visibility: visible;
+  opacity: 1;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
 }

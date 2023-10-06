@@ -1,12 +1,14 @@
 import './main.scss';
+import { addAttr } from './modules/addAttr';
 import { addPhone } from "./modules/addPhone"
-import { fullPricePopup } from './modules/fullPricePopup';
 import { headerMenu } from './modules/headerMenu';
+import { inputMaskTel } from './modules/inputMaskTel';
 import { smoothScroll } from './modules/smoothScroll';
 
-
+addAttr()
 addPhone()
 headerMenu()
 smoothScroll()
-fullPricePopup()
+inputMaskTel()
+
 
