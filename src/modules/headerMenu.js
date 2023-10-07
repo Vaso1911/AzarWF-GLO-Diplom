@@ -1,10 +1,9 @@
 export const headerMenu = () => {
   const body = document.querySelector('.body')
   const menuDialogPopup = document.querySelector('.popup-dialog-menu')
-  const menuPopupNav = document.querySelectorAll('.nav-wrap-repair')
   const menuPopupTable = document.querySelector('.popup-repair-types-content-table')
   const popup = document.querySelector('.popup.popup-repair-types')
-
+  const menuPopupNav = popup.querySelectorAll('.nav-wrap-repair')
   const computedStyles = window.getComputedStyle(menuDialogPopup)
   const transformValue = computedStyles.getPropertyValue('transform')
   const transformValueReg = transformValue.match(/(-?\d+(\.\d+)?)/g)
@@ -17,7 +16,7 @@ export const headerMenu = () => {
     const clickEventClose = e.target.closest('.close-menu')
     const clickEventPriceLink = e.target.closest('.price-link')
     const clickEventPriceClose = e.target.closest('.price-close')
-
+    const popupDialog = e.target.closest('.popup-dialog')
     if (clickEventMenu) {
 
       if (translateX > 1) {
@@ -52,7 +51,7 @@ export const headerMenu = () => {
           el.classList.remove('hidden')
         })
       }
-    } else if (clickEventPriceClose) {
+    } else if (clickEventPriceClose || !popupDialog) {
       popup.classList.remove('vis')
       menuPopupTable.classList.add('hidden')
       menuPopupNav.forEach(el => {
