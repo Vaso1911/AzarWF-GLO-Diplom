@@ -1,33 +1,63 @@
+
+
 import { addAttrTypesRepair } from "../addAttr"
+import { Slider } from "../slider"
 
 export const tabsRepairs = () => {
-  const repair = document.getElementById('repair-types')
-  // const repairTabs = repair.querySelector('.repair-types-tab')
+  const repairTypes = document.getElementById('repair-types')
   const tabs = document.querySelectorAll('[class*="repair-types-nav__item-"]')
-  const sliderType = document.querySelectorAll('[class*="types-repair"]')
+  const sliderContainers = document.querySelectorAll('[class*="types-repair"]')
+  const arrowLeft = document.getElementById('repair-types-arrow_left');
+  const arrowRight = document.getElementById('repair-types-arrow_right');
+  addAttrTypesRepair(tabs, sliderContainers)
 
-  addAttrTypesRepair(tabs, sliderType)
+  const sliders = []
 
-  tabs.forEach(elTab => {
+  sliderContainers.forEach(container => {
+    const slider = new Slider(container, 'repair-types-slider__slide', 'slides-active')
+    sliders.push(slider)
+  })
 
-    elTab.addEventListener('click', (e) => {
-      const tab = e.currentTarget.dataset.tab
-      const slider = document.querySelector(`[data-slider="${tab}"]`)
-
+  tabs.forEach((elTab, index) => {
+    elTab.addEventListener('click', () => {
       tabs.forEach(el => {
         el.classList.remove('active')
       })
       elTab.classList.add('active')
 
-      sliderType.forEach(elSlide => {
+      sliderContainers.forEach(elSlide => {
         elSlide.classList.add('dis-none')
-        elSlide.classList.remove('slider-active')
       })
-      slider.classList.remove('dis-none')
-      slider.classList.add('slider-active')
+
+      const currentSlider = sliderContainers[index]
+      currentSlider.classList.remove('dis-none')
+
+      sliders.forEach((slider, sliderIndex) => {
+        if (sliderIndex == index) {
+          slider.startSlide()
+        } else {
+          slider.stopSlide()
+        }
+      })
 
     })
+
   })
 
 
+  arrowLeft.addEventListener('click', () => {
+    const activeSliderIndex = Array.from(tabs).findIndex(tab => tab.classList.contains('active'));
+    if (activeSliderIndex >= 0) {
+      sliders[activeSliderIndex].prevSlide();
+    }
+  });
+
+  arrowRight.addEventListener('click', () => {
+    const activeSliderIndex = Array.from(tabs).findIndex(tab => tab.classList.contains('active'));
+    if (activeSliderIndex >= 0) {
+      sliders[activeSliderIndex].nextSlide();
+    }
+  });
+
+  sliders[0].startSlide();
 }
