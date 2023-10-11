@@ -2316,11 +2316,13 @@ div.wave-block:nth-child(17):after {
     height: 100%;
     z-index: 10;
     cursor: pointer;
+    pointer-events: none;
 }
 
 .portfolio-slider__slide-frame:hover .item-hover {
     visibility: visible;
     opacity: 1;
+
     -webkit-transition: 0.2s;
     transition: 0.2s;
 }

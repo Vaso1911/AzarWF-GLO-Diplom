@@ -3,9 +3,12 @@ export const addAttrMenu = () => {
   const popupRepair = document.querySelector('.popup.popup-repair-types')
   const popupClose = popupRepair.querySelectorAll('.close')
   const popupPrivacy = document.querySelector('.popup-privacy')
+  const btnPortfolioDis = document.getElementById('portfolio-arrow-mobile_right')
   const fullPriceLinks = allLinks.filter(link => link.textContent.trim() == 'Полный список услуг и цен')
-  popupPrivacy.classList.add('anim-vis')
 
+  popupPrivacy.classList.add('anim-vis')
+  btnPortfolioDis.removeAttribute('disabled')
+  
   fullPriceLinks.forEach(el => {
     el.classList.add('price-link')
   })

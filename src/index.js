@@ -7,7 +7,8 @@ import { modalPrivacy } from './modules/modalPrivacy';
 import { popupFormula } from './modules/sectionFormula/popupFormula';
 import { sliderPorfolio } from './modules/sectionPortfolio/sliderPortfolio';
 import { smoothScroll } from './modules/smoothScroll';
-import { typesRepairs } from './modules/typesRepairs';
+import {tabsRepairs}  from './modules/sectionTypesReapirs/tabsRepairs'
+import { popupSliderPortfolio } from './modules/sectionPortfolio/_sliderPopup';
 
 addAttrMenu()
 
@@ -16,8 +17,7 @@ headerMenu()
 smoothScroll()
 inputMaskTel()
 modalPrivacy()
-typesRepairs()
+tabsRepairs()
 sliderPorfolio()
 popupFormula()
-
-
+popupSliderPortfolio()

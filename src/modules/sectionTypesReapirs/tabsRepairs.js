@@ -1,14 +1,18 @@
-
-
 import { addAttrTypesRepair } from "../addAttr"
 import { Slider } from "../slider"
 
 export const tabsRepairs = () => {
-  const repairTypes = document.getElementById('repair-types')
+  const repairCounter = document.getElementById('repair-counter')
+  const repairCounterCurrent = repairCounter.querySelector('.slider-counter-content__current')
+  const repairCounterTotal = repairCounter.querySelector('.slider-counter-content__total')
   const tabs = document.querySelectorAll('[class*="repair-types-nav__item-"]')
   const sliderContainers = document.querySelectorAll('[class*="types-repair"]')
   const arrowLeft = document.getElementById('repair-types-arrow_left');
   const arrowRight = document.getElementById('repair-types-arrow_right');
+  const arrowTabLeft = document.getElementById('nav-arrow-repair-left_base');
+  const arrowTabRight = document.getElementById('nav-arrow-repair-right_base');
+  const nav = document.querySelector('.repair-types-nav')
+
   addAttrTypesRepair(tabs, sliderContainers)
 
   const sliders = []
@@ -18,8 +22,13 @@ export const tabsRepairs = () => {
     sliders.push(slider)
   })
 
+  sliders.forEach(slider => {
+    repairCounterTotal.textContent = slider.slides.length
+  })
+
   tabs.forEach((elTab, index) => {
     elTab.addEventListener('click', () => {
+      repairCounterCurrent.textContent = '1'
       tabs.forEach(el => {
         el.classList.remove('active')
       })
@@ -33,8 +42,14 @@ export const tabsRepairs = () => {
       currentSlider.classList.remove('dis-none')
 
       sliders.forEach((slider, sliderIndex) => {
+
         if (sliderIndex == index) {
-          slider.startSlide()
+          repairCounterTotal.textContent = slider.slides.length
+
+          slider.startSlide((numberSlide) => {
+            repairCounterCurrent.textContent = numberSlide
+          })
+
         } else {
           slider.stopSlide()
         }
@@ -44,20 +59,33 @@ export const tabsRepairs = () => {
 
   })
 
-
   arrowLeft.addEventListener('click', () => {
     const activeSliderIndex = Array.from(tabs).findIndex(tab => tab.classList.contains('active'));
     if (activeSliderIndex >= 0) {
-      sliders[activeSliderIndex].prevSlide();
+      sliders[activeSliderIndex].prevSlide((numberSlide) => {
+        repairCounterCurrent.textContent = numberSlide
+      });
     }
   });
 
   arrowRight.addEventListener('click', () => {
     const activeSliderIndex = Array.from(tabs).findIndex(tab => tab.classList.contains('active'));
     if (activeSliderIndex >= 0) {
-      sliders[activeSliderIndex].nextSlide();
+      sliders[activeSliderIndex].nextSlide((numberSlide) => {
+        repairCounterCurrent.textContent = numberSlide
+      });
     }
   });
 
-  sliders[0].startSlide();
+  sliders[0].startSlide((numberSlide) => {
+    repairCounterCurrent.textContent = numberSlide
+  })
+
+  arrowTabRight.addEventListener('click', () => {
+    nav.scrollLeft += 125
+  })
+  
+  arrowTabLeft.addEventListener('click', () => {
+    nav.scrollLeft -= 125
+  })
 }

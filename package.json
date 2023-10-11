@@ -23,6 +23,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "inputmask": "^5.0.8"
+    "inputmask": "^5.0.8",
+    "swiper": "^10.3.1"
   }
 }

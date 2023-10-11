@@ -1,0 +1,49 @@
+.formula {
+
+  &-item {
+    z-index: 1;
+
+    &__icon:hover &__icon-inner {
+      opacity: 1;
+    }
+
+    &-popup--down {
+      // top: calc(100% + 90px);
+      padding: 40px 40px;
+
+      &::before {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:hover {
+      z-index: 2;
+    }
+  }
+
+
+  &-slider-wrap {
+    max-width: calc(100% - 40px);
+  }
+
+
+
+  &-slider__slide {
+    display: flex;
+
+    &--active {
+      opacity: 1;
+
+      .formula-item__icon-inner {
+        background: -webkit-gradient(linear, left top, right top, from(#F48922), to(#FFB015));
+        background: linear-gradient(90deg, #F48922 0%, #FFB015 100%);
+      }
+    }
+  }
+
+  .swiper {
+    position: initial;
+  }
+
+
+}

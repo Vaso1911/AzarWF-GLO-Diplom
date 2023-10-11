@@ -14,8 +14,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     width: 100%;
     opacity: 0;
     -webkit-transition: opacity .5s;
@@ -26,15 +26,6 @@
     opacity: 1;
   }
 }
-// position: absolute;
-//     top: 50%;
-//     left: 50%;
-//     -webkit-transform: translate(-50%,-50%);
-//     transform: translate(-50%,-50%);
-//     width: 100%;
-//     opacity: 0;
-//     -webkit-transition: opacity .5s;
-//     transition: opacity .5s;
 
 .dis-none {
   display: none;
@@ -59,3 +50,6 @@
   opacity: 0;
 }
 
+.repair-types-nav {
+  overflow: scroll;
+}
