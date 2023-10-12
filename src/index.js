@@ -9,9 +9,9 @@ import { sliderPorfolio } from './modules/sectionPortfolio/sliderPortfolio';
 import { smoothScroll } from './modules/smoothScroll';
 import {tabsRepairs}  from './modules/sectionTypesReapirs/tabsRepairs'
 import { popupSliderPortfolio } from './modules/sectionPortfolio/_sliderPopup';
+import { transparency } from './modules/sectionTranspareency/transparency';
 
 addAttrMenu()
-
 addPhone()
 headerMenu()
 smoothScroll()
@@ -21,3 +21,4 @@ tabsRepairs()
 sliderPorfolio()
 popupFormula()
 popupSliderPortfolio()
+transparency()

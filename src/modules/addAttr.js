@@ -8,7 +8,7 @@ export const addAttrMenu = () => {
 
   popupPrivacy.classList.add('anim-vis')
   btnPortfolioDis.removeAttribute('disabled')
-  
+
   fullPriceLinks.forEach(el => {
     el.classList.add('price-link')
   })
@@ -41,7 +41,16 @@ export const addAttrTypesRepair = (tabs, slider) => {
 
 }
 
+export const addAttrTransparency = (tabs, slider) => {
+  tabs.forEach((el, i) => {
+    el.setAttribute('data-tab-transparency', `${i + 1}`)
+  })
+  slider.forEach((el, i) => {
+    el.setAttribute('data-slider-transparency', `${i + 1}`)
+    el.classList.add('dis-none')
 
+  })
+}
 
 
 
