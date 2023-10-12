@@ -29,12 +29,11 @@ export const transparency = () => {
 
   const slideNext = () => {
     const activeSlide = document.querySelector('.popup-transparency-slider__slide.dis-block');
-    console.dir(activeSlide);
+
     if (activeSlide) {
       const currentDataset = parseInt(activeSlide.dataset.sliderTransparency);
       const nextDataset = currentDataset + 1;
       const nextSlide = document.querySelector(`[data-slider-transparency="${nextDataset}"]`);
-      console.log(nextSlide);
       if (nextSlide) {
         activeSlide.classList.remove('dis-block');
         activeSlide.classList.add('dis-none');
@@ -50,12 +49,11 @@ export const transparency = () => {
 
   const slidePrev = () => {
     const activeSlide = document.querySelector('.popup-transparency-slider__slide.dis-block');
-    console.log(activeSlide);
+
     if (activeSlide) {
       const currentDataset = parseInt(activeSlide.dataset.sliderTransparency);
       const prevDataset = currentDataset - 1;
       const prevSlide = document.querySelector(`[data-slider-transparency="${prevDataset}"]`);
-      console.log(prevSlide);
       if (prevSlide) {
         activeSlide.classList.remove('dis-block');
         activeSlide.classList.add('dis-none');
