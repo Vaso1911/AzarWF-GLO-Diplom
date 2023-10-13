@@ -4,7 +4,6 @@ import 'swiper/css/pagination';
 
 export const reviews = () => {
   const section = document.getElementById('reviews')
-  // const swiper = section.querySelector('.reviews-slider-wrap')
   const swiperWrapper = section.querySelector('.reviews-slider')
   const sliders = section.querySelectorAll('.reviews-slider__slide')
   const paginations = section.querySelector('.slider-dots-reviews')

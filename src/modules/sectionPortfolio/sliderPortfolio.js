@@ -1,6 +1,7 @@
 import { Slider } from "../slider";
 
 export const sliderPorfolio = () => {
+  const body = document.querySelector('.body');
   const sliderBlock = document.querySelector('.portfolio-slider');
   const slider = new Slider(sliderBlock, 'portfolio-slider__slide')
   const arrowLeft = document.getElementById('portfolio-arrow_left');
@@ -8,8 +9,6 @@ export const sliderPorfolio = () => {
   const popup = document.querySelector('.popup-portfolio')
   const btnSlide = document.querySelectorAll('.portfolio-slider__slide-frame')
   const imgPopupSlide = document.querySelectorAll('.popup-portfolio-slider__slide')
-  const arrowPopupRight = document.getElementById('popup_portfolio_right')
-  const arrowPopupLeft = document.getElementById('popup_portfolio_left')
   const counter = document?.getElementById('popup-portfolio-counter')
   const currentCounter = counter.querySelector('.slider-counter-content__current')
   const totalCounter = counter.querySelector('.slider-counter-content__total')
@@ -66,16 +65,6 @@ export const sliderPorfolio = () => {
     popupText.classList.add('dis-block')
   }
 
-  const hiddenPopupSlider = () => {
-    const popupImg = document.querySelectorAll(`[data-popup-img]`)
-    const popupText = document.querySelectorAll(`[data-portfolio-text]`)
-    popupImg.forEach(el => {
-      el.classList.remove('dis-block')
-    })
-    popupText.forEach(el => {
-      el.classList.remove('dis-block')
-    })
-  }
 
   const nextPopupSlide = () => {
     const activePopupImg = document.querySelector('.popup-portfolio-slider__slide.dis-block');
@@ -112,41 +101,34 @@ export const sliderPorfolio = () => {
         prevPopupImg.classList.add('dis-block');
         prevPopupText.classList.add('dis-block');
       }
-      if(prevDataset != 0 ) {
+      if (prevDataset != 0) {
         currentCounter.textContent = prevDataset
       }
     }
   }
 
-  arrowRight.addEventListener('click', () => {
+body.addEventListener('click', (e) => {
+  const click = e.target
+
+  if (click.closest('#portfolio-arrow_right')) {
     if (currentIndex + visibleSlides < slider.slides.length) {
       currentIndex++;
       hiddenSlides();
       updateArrows();
     }
-  });
-
-  arrowLeft.addEventListener('click', () => {
+  }else if(click.closest('#portfolio-arrow_left')) {
     if (currentIndex > 0) {
       currentIndex--;
       hiddenSlides();
       updateArrows();
     }
-  });
+  } else if(click.closest('#popup_portfolio_right')) {
+    nextPopupSlide()
+  } else if(click.closest('#popup_portfolio_left')) {
+    prevPopupSlide()
+  }
 
-  popup.addEventListener('click', (e) => {
-    const popupDialog = e.target.closest('.popup-dialog-portfolio')
-    const close = e.target.closest('.close')
-
-    if (!popupDialog || close) {
-      popup.classList.remove('vis')
-      hiddenPopupSlider()
-    }
-  })
-
-  arrowPopupRight.addEventListener('click', nextPopupSlide)
-
-  arrowPopupLeft.addEventListener('click', prevPopupSlide)
+})
 
   updateArrows();
   hiddenSlides();
@@ -201,7 +183,7 @@ export const sliderPorfolio = () => {
           prevSlide.classList.remove('dis-none');
           prevSlide.classList.add('dis-block');
         }
-        if(prevDataset != 0 ) {
+        if (prevDataset != 0) {
           currentCounter.textContent = prevDataset
         }
 

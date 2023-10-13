@@ -14,6 +14,8 @@ import { reviews } from './modules/sectionsReviews/reviews';
 import { consultation } from './modules/consultation';
 import { popupRepairs } from './modules/sectionTypesReapirs/popupRepairs';
 import { accordion } from './modules/sectionFAQ/accordion';
+import { sendForm } from './modules/sendForm';
+import { popupClose } from './modules/popopClose';
 
 addAttrMenu()
 addPhone()
@@ -30,3 +32,5 @@ transparency()
 reviews()
 consultation()
 accordion()
+sendForm()
+popupClose()

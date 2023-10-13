@@ -20,13 +20,6 @@ export const transparency = () => {
   totalCounter.textContent = popupSlides.length
   addAttrTransparency(transparencyItem, popupSlides)
 
-  const hiddenSlide = () => {
-    popupSlides.forEach(el => {
-      el.classList.add('dis-none')
-      el.classList.remove('dis-block')
-    })
-  }
-
   const slideNext = () => {
     const activeSlide = document.querySelector('.popup-transparency-slider__slide.dis-block');
 
@@ -76,17 +69,7 @@ export const transparency = () => {
       popup.classList.add('vis')
       currentCounter.textContent = itemData
     }
-  })
 
-
-  popup.addEventListener('click', (e) => {
-    const wrapper = e.target.closest('.popup-dialog-transparency')
-    const close = e.target.closest('.close')
-
-    if (!wrapper || close) {
-      popup.classList.remove('vis')
-      hiddenSlide()
-    }
   })
 
   btnRightSlider.addEventListener('click', slideNext)

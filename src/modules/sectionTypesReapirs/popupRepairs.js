@@ -1,6 +1,5 @@
 export const popupRepairs = () => {
   const db = '../../../db/db.json';
-  const popup = document.querySelector('.popup-repair-types')
   const tabs = document.querySelectorAll('.popup-repair-types-nav__item')
   const tableWrapper = document.querySelector('.popup-repair-types-content-table')
   const nav = document.querySelector('.nav-popup-repair-types')

@@ -8,11 +8,4 @@ export const consultation = () => {
     })
   })
 
-  popup.addEventListener('click', (e) => {
-    const  close = e.target.closest('.close')
-    const  wrapper = e.target.closest('.feedback-wrap')
-    if(close || !wrapper) {
-      popup.classList.remove('vis')
-    }
-  })
 }
