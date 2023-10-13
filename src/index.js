@@ -13,6 +13,7 @@ import { transparency } from './modules/sectionTranspareency/transparency';
 import { reviews } from './modules/sectionsReviews/reviews';
 import { consultation } from './modules/consultation';
 import { popupRepairs } from './modules/sectionTypesReapirs/popupRepairs';
+import { accordion } from './modules/sectionFAQ/accordion';
 
 addAttrMenu()
 addPhone()
@@ -28,3 +29,4 @@ popupSliderPortfolio()
 transparency()
 reviews()
 consultation()
+accordion()

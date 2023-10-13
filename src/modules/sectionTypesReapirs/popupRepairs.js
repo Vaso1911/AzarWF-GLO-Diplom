@@ -7,7 +7,7 @@ export const popupRepairs = () => {
   const arrowTabLeft = document.getElementById('nav-arrow-popup-repair_left')
   const arrowTabRight = document.getElementById('nav-arrow-popup-repair_right')
 
-  popup.classList.add('vis')
+
 
   const loadData = async () => {
     try {
