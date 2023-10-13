@@ -5,7 +5,6 @@ export const addAttrMenu = () => {
   const popupPrivacy = document.querySelector('.popup-privacy')
   const btnPortfolioDis = document.getElementById('portfolio-arrow-mobile_right')
   const fullPriceLinks = allLinks.filter(link => link.textContent.trim() == 'Полный список услуг и цен')
-
   popupPrivacy.classList.add('anim-vis')
   btnPortfolioDis.removeAttribute('disabled')
 
@@ -50,9 +49,15 @@ export const addAttrTransparency = (tabs, slider) => {
     el.classList.add('dis-none')
 
   })
-  
+
 }
 
+export const removeAttrForm = (form) => {
+  const checkboxes = form.querySelectorAll('input[type="checkbox"]')
+  checkboxes.forEach(el => {
+    el.removeAttribute('required')
+  })
+}
 
 
 
