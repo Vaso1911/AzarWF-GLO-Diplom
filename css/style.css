@@ -7226,7 +7226,7 @@ div.wave-block:nth-child(17):after {
 
 @media (max-width: 1024px) {
     .nav-list-popup-repair {
-        min-width: 3130px;
+        min-width: 2200px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -7238,7 +7238,7 @@ div.wave-block:nth-child(17):after {
 
 @media (max-width: 575px) {
     .nav-list-popup-repair {
-        min-width: 2840px;
+        min-width: 1800px;
     }
 }
 

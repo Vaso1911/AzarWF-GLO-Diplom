@@ -10,6 +10,9 @@ import { smoothScroll } from './modules/smoothScroll';
 import {tabsRepairs}  from './modules/sectionTypesReapirs/tabsRepairs'
 import { popupSliderPortfolio } from './modules/sectionPortfolio/_sliderPopup';
 import { transparency } from './modules/sectionTranspareency/transparency';
+import { reviews } from './modules/sectionsReviews/reviews';
+import { consultation } from './modules/consultation';
+import { popupRepairs } from './modules/sectionTypesReapirs/popupRepairs';
 
 addAttrMenu()
 addPhone()
@@ -18,7 +21,10 @@ smoothScroll()
 inputMaskTel()
 modalPrivacy()
 tabsRepairs()
+popupRepairs()
 sliderPorfolio()
 popupFormula()
 popupSliderPortfolio()
 transparency()
+reviews()
+consultation()

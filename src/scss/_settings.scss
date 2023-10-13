@@ -50,6 +50,11 @@
   opacity: 0;
 }
 
-.repair-types-nav {
+.repair-types-nav,
+.nav-popup-repair-types {
   overflow: scroll;
+}
+
+.popup-repair-types-nav__item.active {
+border-color: #F48922  !important;
 }

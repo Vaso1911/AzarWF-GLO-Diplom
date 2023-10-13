@@ -50,6 +50,7 @@ export const addAttrTransparency = (tabs, slider) => {
     el.classList.add('dis-none')
 
   })
+  
 }
 
 
