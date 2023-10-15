@@ -15,7 +15,7 @@
   \******************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const { formEnter } = __webpack_require__(/*! ./modules/admin/formEnter */ \"./modules/admin/formEnter.js\");\nconst { filter } = __webpack_require__(/*! ./modules/admin/filter */ \"./modules/admin/filter.js\");\nconst { UserService } = __webpack_require__(/*! ./modules/admin/userService */ \"./modules/admin/userService.js\");\nconst { addWork } = __webpack_require__(/*! ./modules/admin/addWork */ \"./modules/admin/addWork.js\");\nconst { modal } = __webpack_require__(/*! ./modules/admin/modal */ \"./modules/admin/modal.js\");\nconst { render } = __webpack_require__(/*! ./modules/admin/render */ \"./modules/admin/render.js\");\nconst { removeWork } = __webpack_require__(/*! ./modules/admin/removeWork */ \"./modules/admin/removeWork.js\");\nconst { editWork } = __webpack_require__(/*! ./modules/admin/editWork */ \"./modules/admin/editWork.js\");\nconst indexHtml = document.querySelector('.body-auth')\nwindow.userService = new UserService\n\nif (indexHtml) {\n  userService.getUsers().then(data => {\n    data.forEach(el => {\n      formEnter(el)\n    });\n  })\n} else {\n  userService.getWorks().then(data => {\n    render(data)\n  })\n\n  addWork()\n  removeWork()\n  editWork()\n  filter()\n  modal()\n}\n\n\n\n\n//# sourceURL=webpack:///./admin.js?");
+eval("const { formEnter } = __webpack_require__(/*! ./modules/admin/formEnter */ \"./modules/admin/formEnter.js\");\nconst { filter } = __webpack_require__(/*! ./modules/admin/filter */ \"./modules/admin/filter.js\");\nconst { UserService } = __webpack_require__(/*! ./modules/admin/userService */ \"./modules/admin/userService.js\");\nconst { addWork } = __webpack_require__(/*! ./modules/admin/addWork */ \"./modules/admin/addWork.js\");\nconst { modal } = __webpack_require__(/*! ./modules/admin/modal */ \"./modules/admin/modal.js\");\nconst { render } = __webpack_require__(/*! ./modules/admin/render */ \"./modules/admin/render.js\");\nconst { removeWork } = __webpack_require__(/*! ./modules/admin/removeWork */ \"./modules/admin/removeWork.js\");\nconst { editWork } = __webpack_require__(/*! ./modules/admin/editWork */ \"./modules/admin/editWork.js\");\nconst { sortWorks } = __webpack_require__(/*! ./modules/admin/sortWorks */ \"./modules/admin/sortWorks.js\");\nconst { searchWorks } = __webpack_require__(/*! ./modules/admin/searchWorks */ \"./modules/admin/searchWorks.js\");\nconst indexHtml = document.querySelector('.body-auth')\nwindow.userService = new UserService\n\nif (indexHtml) {\n  userService.getUsers().then(data => {\n    data.forEach(el => {\n      formEnter(el)\n    });\n  })\n} else {\n  userService.getWorks().then(data => {\n    render(data)\n  })\n\n  addWork()\n  removeWork()\n  editWork()\n  filter()\n  modal()\n  sortWorks()\nsearchWorks()\n}\n\n\n\n\n//# sourceURL=webpack:///./admin.js?");
 
 /***/ }),
 
@@ -27,6 +27,17 @@ eval("const { formEnter } = __webpack_require__(/*! ./modules/admin/formEnter */
 
 "use strict";
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   addWork: () => (/* binding */ addWork)\n/* harmony export */ });\n/* harmony import */ var _render__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./render */ \"./modules/admin/render.js\");\n\n\nconst addWork = () => {\n  const form = document.querySelector('form')\n  const typeInput = form.querySelector('#type')\n  const nameInput = form.querySelector('#name')\n  const unitsInput = form.querySelector('#units')\n  const costInput = form.querySelector('#cost')\n\n  form.addEventListener('submit', (e) => {\n    e.preventDefault()\n    if (!form.dataset.method) {\n      const work = {\n        type: typeInput.value,\n        name: nameInput.value,\n        units: unitsInput.value,\n        cost: costInput.value,\n      }\n\n      userService.addWork(work).then(() => {\n        userService.getUsers().then(works => {\n          ;(0,_render__WEBPACK_IMPORTED_MODULE_0__.render)(works)\n          form.reset()\n        })\n      })\n    }\n\n  })\n\n}\n\n//# sourceURL=webpack:///./modules/admin/addWork.js?");
+
+/***/ }),
+
+/***/ "./modules/admin/debounce.js":
+/*!***********************************!*\
+  !*** ./modules/admin/debounce.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   debounce: () => (/* binding */ debounce)\n/* harmony export */ });\nconst debounce = (func, ms = 300) => {\n  let timer\n  return (...args) => {\n    clearTimeout(timer)\n\n    timer = setTimeout(() => { func.apply(undefined, args) }, ms)\n  }\n}\n\n//# sourceURL=webpack:///./modules/admin/debounce.js?");
 
 /***/ }),
 
@@ -96,6 +107,28 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./modules/admin/searchWorks.js":
+/*!**************************************!*\
+  !*** ./modules/admin/searchWorks.js ***!
+  \**************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   searchWorks: () => (/* binding */ searchWorks)\n/* harmony export */ });\n/* harmony import */ var _debounce__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./debounce */ \"./modules/admin/debounce.js\");\n/* harmony import */ var _render__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./render */ \"./modules/admin/render.js\");\n\n\n\nconst searchWorks = () => {\n  const searchInput = document.getElementById('search')\n\nconst debounceSearch =  (0,_debounce__WEBPACK_IMPORTED_MODULE_0__.debounce)(() => {\n  userService.getSearchWorks(searchInput.value).then(works => {\n    ;(0,_render__WEBPACK_IMPORTED_MODULE_1__.render)(works);\n  })\n})\n\n  searchInput.addEventListener('input', debounceSearch)\n}\n\n//# sourceURL=webpack:///./modules/admin/searchWorks.js?");
+
+/***/ }),
+
+/***/ "./modules/admin/sortWorks.js":
+/*!************************************!*\
+  !*** ./modules/admin/sortWorks.js ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   sortWorks: () => (/* binding */ sortWorks)\n/* harmony export */ });\n/* harmony import */ var _render__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./render */ \"./modules/admin/render.js\");\n\n\nconst sortWorks = () => {\n  const headerSort = document.querySelector('thead')\n  console.log(headerSort);\n  let isSort = false\n  headerSort.addEventListener('click', (e) => {\n    const headerId = e.target.closest('.th-id')\n    const headerType = e.target.closest('.th-type')\n    const headerName = e.target.closest('.th-name')\n    const headerUnits = e.target.closest('.th-units')\n    const headerCost = e.target.closest('.th-cost')\n\n    const sortType = (idName) => {\n      userService.getSortWorks({\n        id: idName,\n        value: isSort ? 'asc' : 'desc'\n      }).then(users => {\n        ;(0,_render__WEBPACK_IMPORTED_MODULE_0__.render)(users);\n      })\n    }\n    if (headerId) {\n      sortType('id')\n      isSort = !isSort\n    }\n\n    if (headerType) {\n      sortType('type')\n      isSort = !isSort\n    }\n\n    if (headerName) {\n      sortType('name')\n      isSort = !isSort\n    }\n\n    if (headerUnits) {\n      sortType('units')\n      isSort = !isSort\n    }\n\n    if (headerCost) {\n      sortType('cost')\n      isSort = !isSort\n    }\n  })\n\n}\n\n//# sourceURL=webpack:///./modules/admin/sortWorks.js?");
+
+/***/ }),
+
 /***/ "./modules/admin/userService.js":
 /*!**************************************!*\
   !*** ./modules/admin/userService.js ***!
@@ -103,7 +136,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   UserService: () => (/* binding */ UserService)\n/* harmony export */ });\nclass UserService  {\n  async fetchData(url, options) {\n    try {\n      const res = await fetch(url, options);\n      if (!res.ok) {\n        throw new Error('Произошла ошибка при запросе к серверу.');\n      }\n      return res.json();\n    } catch (error) {\n      console.error(error);\n      throw new Error('Произошла ошибка, данных нет!');\n    }\n  }\n\n  async getUsers() {\n    return await this.fetchData('http://localhost:1001/users');\n  }\n\n  async getWorks() {\n    return await this.fetchData('http://localhost:1001/works');\n  }\n\n  async addWork(work) {\n    return await this.fetchData('http://localhost:1001/works', {\n      method: 'POST',\n      headers: {\n        \"Content-Type\": \"application/json\",\n      },\n      body: JSON.stringify(work),\n    });\n  }\n\n  async removeWork(id) {\n    return await this.fetchData(`http://localhost:1001/works/${id}`, {\n      method: 'DELETE',\n    });\n  }\n\n\n  async editWork(id, work) {\n    return await this.fetchData(`http://localhost:1001/works/${id}`, {\n      method: 'PATCH',\n      headers: {\n        \"Content-Type\": \"application/json\",\n      },\n      body: JSON.stringify(work),\n    });\n  }\n}\n\n//# sourceURL=webpack:///./modules/admin/userService.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   UserService: () => (/* binding */ UserService)\n/* harmony export */ });\nclass UserService  {\n  async fetchData(url, options) {\n    try {\n      const res = await fetch(url, options);\n      if (!res.ok) {\n        throw new Error('Произошла ошибка при запросе к серверу.');\n      }\n      return res.json();\n    } catch (error) {\n      console.error(error);\n      throw new Error('Произошла ошибка, данных нет!');\n    }\n  }\n\n  async getUsers() {\n    return await this.fetchData('http://localhost:1001/users');\n  }\n\n  async getWorks() {\n    return await this.fetchData('http://localhost:1001/works');\n  }\n\n  async addWork(work) {\n    return await this.fetchData('http://localhost:1001/works', {\n      method: 'POST',\n      headers: {\n        \"Content-Type\": \"application/json\",\n      },\n      body: JSON.stringify(work),\n    });\n  }\n\n  async removeWork(id) {\n    return await this.fetchData(`http://localhost:1001/works/${id}`, {\n      method: 'DELETE',\n    });\n  }\n\n\n  async editWork(id, work) {\n    return await this.fetchData(`http://localhost:1001/works/${id}`, {\n      method: 'PATCH',\n      headers: {\n        \"Content-Type\": \"application/json\",\n      },\n      body: JSON.stringify(work),\n    });\n  }\n\n  async getSortWorks(sortOption) {\n    return await this.fetchData(`http://localhost:1001/works?_sort=${sortOption.id}&_order=${sortOption.value}`);\n  }\n\n  async getSearchWorks(str) {\n    return await this.fetchData(`http://localhost:1001/works?name_like=${str}`);\n  }\n}\n\n//# sourceURL=webpack:///./modules/admin/userService.js?");
 
 /***/ })
 

@@ -6,6 +6,8 @@ const { modal } = require("./modules/admin/modal");
 const { render } = require("./modules/admin/render");
 const { removeWork } = require("./modules/admin/removeWork");
 const { editWork } = require("./modules/admin/editWork");
+const { sortWorks } = require("./modules/admin/sortWorks");
+const { searchWorks } = require("./modules/admin/searchWorks");
 const indexHtml = document.querySelector('.body-auth')
 window.userService = new UserService
 
@@ -25,6 +27,8 @@ if (indexHtml) {
   editWork()
   filter()
   modal()
+  sortWorks()
+searchWorks()
 }
 
 

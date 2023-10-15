@@ -46,4 +46,12 @@ export class UserService  {
       body: JSON.stringify(work),
     });
   }
+
+  async getSortWorks(sortOption) {
+    return await this.fetchData(`http://localhost:1001/works?_sort=${sortOption.id}&_order=${sortOption.value}`);
+  }
+
+  async getSearchWorks(str) {
+    return await this.fetchData(`http://localhost:1001/works?name_like=${str}`);
+  }
 }
