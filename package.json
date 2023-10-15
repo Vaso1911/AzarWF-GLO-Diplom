@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --mode=production",
     "watch": "webpack --watch --mode=development",
-    "start": "webpack serve --mode=development --open"
+    "server": "json-server --watch db/db.json --port=1001"
   },
   "author": "AzarWF",
   "license": "ISC",
@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "inputmask": "^5.0.8",
+    "json-server": "^0.17.4",
     "swiper": "^10.3.1"
   }
 }

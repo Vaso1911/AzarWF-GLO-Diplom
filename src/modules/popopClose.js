@@ -25,12 +25,14 @@ export const popupClose = () => {
       const close = e.target.closest('.close')
       const popupFeedback = e.target.closest('.feedback-wrap')
       const popupTransparency = e.target.closest('.popup-dialog-transparency')
-      const arr = [popupPortfolio, popupFeedback, popupTransparency]
+      const popupRepairTypes = e.target.closest('.popup-dialog-repair-types')
+      const arr = [popupPortfolio, popupFeedback, popupTransparency, popupRepairTypes]
       const allFalse = arr.every(el => !el)
       if (allFalse || close) {
         el.classList.remove('vis')
         hiddenPopupSlider()
         hiddenSlide()
+
       }
     })
   })

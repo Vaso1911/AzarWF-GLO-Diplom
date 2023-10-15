@@ -11,30 +11,34 @@ export const popupRepairs = () => {
   const loadData = async () => {
     try {
       const response = await fetch(db);
-      const data = await response.json();
+      const jsonData = await response.json();
+      const data = jsonData.works;
 
       tabs.forEach(tab => {
 
         tab.addEventListener('click', () => {
           const tabType = tab.textContent
-          const filterData = data.filter(item => item.type === tabType)
+          if (Array.isArray(data)) {
+            const filterData = data.filter(item => item.type === tabType)
 
-          let tableContent = '<table class="popup-repair-types-content-table__list"><tbody>'
+            let tableContent = '<table class="popup-repair-types-content-table__list"><tbody>'
 
-          filterData.forEach(item => {
-            tableContent += `
-              <tr class="mobile-row showHide">
-                <td class="repair-types-name">${item.name}</td>
-                <td class="mobile-col-title tablet-hide desktop-hide">Ед.измерения</td>
-                <td class="mobile-col-title tablet-hide desktop-hide">Цена за ед.</td>
-                <td class="repair-types-value">${item.units}</td>
-                <td class="repair-types-value">${item.cost} руб.</td>
-              </tr>
-            `
-          })
+            filterData.forEach(item => {
+              tableContent += `
+                <tr class="mobile-row showHide">
+                  <td class="repair-types-name">${item.name}</td>
+                  <td class="mobile-col-title tablet-hide desktop-hide">Ед.измерения</td>
+                  <td class="mobile-col-title tablet-hide desktop-hide">Цена за ед.</td>
+                  <td class="repair-types-value">${item.units}</td>
+                  <td class="repair-types-value">${item.cost} руб.</td>
+                </tr>
+              `
+            })
 
-          tableContent += '</tbody></table>'
-          tableWrapper.innerHTML = tableContent
+            tableContent += '</tbody></table>'
+            tableWrapper.innerHTML = tableContent
+          }
+
 
           tabs.forEach(el => {
             if (el === tab) {
